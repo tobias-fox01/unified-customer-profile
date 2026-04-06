@@ -1,4 +1,4 @@
-namespace unified_customer_profile_api
+namespace unified_customer_profile.api
 {
     public class WeatherForecast
     {

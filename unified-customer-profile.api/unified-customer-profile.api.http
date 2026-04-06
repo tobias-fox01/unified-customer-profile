@@ -1,0 +1,6 @@
+@unified_customer_profile.api_HostAddress = http://localhost:5063
+
+GET {{unified_customer_profile.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
