@@ -1,0 +1,204 @@
+{
+  "customers": [
+    {
+      "customerId": "cust-001",
+      "firstName": "James",
+      "lastName": "Smith",
+      "email": "james.smith@example.com",
+      "phone": "+447700900001",
+      "dateOfBirth": "1985-04-12",
+      "address": {
+        "line1": "12 King Street",
+        "city": "Manchester",
+        "postcode": "M1 2AB",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1001",
+        "auth": "auth-abc-001",
+        "loyalty": "loy-5001"
+      },
+      "createdAt": "2024-01-10T10:15:30Z"
+    },
+    {
+      "customerId": "cust-002",
+      "firstName": "Emily",
+      "lastName": "Johnson",
+      "email": "emily.johnson@example.com",
+      "phone": "+447700900002",
+      "dateOfBirth": "1990-08-22",
+      "address": {
+        "line1": "45 Oxford Road",
+        "city": "Liverpool",
+        "postcode": "L1 8JQ",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1002",
+        "auth": "auth-abc-002",
+        "loyalty": "loy-5002"
+      },
+      "createdAt": "2024-02-14T14:20:00Z"
+    },
+    {
+      "customerId": "cust-003",
+      "firstName": "Oliver",
+      "lastName": "Brown",
+      "email": "oliver.brown@example.com",
+      "phone": "+447700900003",
+      "dateOfBirth": "1978-11-05",
+      "address": {
+        "line1": "78 High Street",
+        "city": "Leeds",
+        "postcode": "LS1 4DY",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1003",
+        "auth": "auth-abc-003",
+        "loyalty": "loy-5003"
+      },
+      "createdAt": "2023-12-01T09:00:00Z"
+    },
+    {
+      "customerId": "cust-004",
+      "firstName": "Sophia",
+      "lastName": "Williams",
+      "email": "sophia.williams@example.com",
+      "phone": "+447700900004",
+      "dateOfBirth": "1995-02-18",
+      "address": {
+        "line1": "22 Baker Street",
+        "city": "London",
+        "postcode": "NW1 6XE",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1004",
+        "auth": "auth-abc-004",
+        "loyalty": "loy-5004"
+      },
+      "createdAt": "2024-03-05T11:45:00Z"
+    },
+    {
+      "customerId": "cust-005",
+      "firstName": "Liam",
+      "lastName": "Jones",
+      "email": "liam.jones@example.com",
+      "phone": "+447700900005",
+      "dateOfBirth": "1982-07-30",
+      "address": {
+        "line1": "9 Castle Street",
+        "city": "Chester",
+        "postcode": "CH1 2DS",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1005",
+        "auth": "auth-abc-005",
+        "loyalty": "loy-5005"
+      },
+      "createdAt": "2024-01-22T16:10:00Z"
+    },
+    {
+      "customerId": "cust-006",
+      "firstName": "Ava",
+      "lastName": "Taylor",
+      "email": "ava.taylor@example.com",
+      "phone": "+447700900006",
+      "dateOfBirth": "1998-12-09",
+      "address": {
+        "line1": "14 Queen Street",
+        "city": "Birmingham",
+        "postcode": "B1 1AA",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1006",
+        "auth": "auth-abc-006",
+        "loyalty": "loy-5006"
+      },
+      "createdAt": "2024-02-01T08:30:00Z"
+    },
+    {
+      "customerId": "cust-007",
+      "firstName": "Noah",
+      "lastName": "Davies",
+      "email": "noah.davies@example.com",
+      "phone": "+447700900007",
+      "dateOfBirth": "1987-06-14",
+      "address": {
+        "line1": "3 Victoria Road",
+        "city": "Bristol",
+        "postcode": "BS1 5TY",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1007",
+        "auth": "auth-abc-007",
+        "loyalty": "loy-5007"
+      },
+      "createdAt": "2023-11-18T13:25:00Z"
+    },
+    {
+      "customerId": "cust-008",
+      "firstName": "Isabella",
+      "lastName": "Evans",
+      "email": "isabella.evans@example.com",
+      "phone": "+447700900008",
+      "dateOfBirth": "1993-09-27",
+      "address": {
+        "line1": "56 Market Street",
+        "city": "Nottingham",
+        "postcode": "NG1 6AA",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1008",
+        "auth": "auth-abc-008",
+        "loyalty": "loy-5008"
+      },
+      "createdAt": "2024-03-12T17:00:00Z"
+    },
+    {
+      "customerId": "cust-009",
+      "firstName": "William",
+      "lastName": "Wilson",
+      "email": "william.wilson@example.com",
+      "phone": "+447700900009",
+      "dateOfBirth": "1975-01-03",
+      "address": {
+        "line1": "88 Prince Street",
+        "city": "Glasgow",
+        "postcode": "G1 2FF",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1009",
+        "auth": "auth-abc-009",
+        "loyalty": "loy-5009"
+      },
+      "createdAt": "2023-10-10T10:10:10Z"
+    },
+    {
+      "customerId": "cust-010",
+      "firstName": "Mia",
+      "lastName": "Thomas",
+      "email": "mia.thomas@example.com",
+      "phone": "+447700900010",
+      "dateOfBirth": "2000-05-19",
+      "address": {
+        "line1": "101 Harbour Road",
+        "city": "Southampton",
+        "postcode": "SO14 3ZH",
+        "country": "UK"
+      },
+      "externalIds": {
+        "marketing": "mkt-1010",
+        "auth": "auth-abc-010",
+        "loyalty": "loy-5010"
+      },
+      "createdAt": "2024-03-20T12:00:00Z"
+    }
+  ]
+}
