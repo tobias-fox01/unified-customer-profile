@@ -2,11 +2,22 @@
 
 namespace unified_customer_profile.api.Controllers
 {
-    public class HomeController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class StatusController : ControllerBase
+
     {
-        public IActionResult Index()
+        private readonly ILogger<StatusController> _logger;
+
+        public StatusController(ILogger<StatusController> logger)
         {
-            return View();
+            _logger = logger;
+        }
+
+        [HttpGet(Name = "GetStatus")]
+        public IActionResult Get()
+        {
+            return Ok();
         }
     }
 }
