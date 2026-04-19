@@ -7,6 +7,7 @@
     <RootNamespace>unified_customer_profile.api</RootNamespace>
     <UserSecretsId>33f59025-b6da-43a7-8936-7a2cc74ac4ea</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>

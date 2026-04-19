@@ -11,15 +11,18 @@ jobs:
         dotnet-version: [ '10.0.x' ]
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0
   
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 #v5.2 
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
       - name: Install dependencies
         run: dotnet restore
+
+      - name: Format
+        run: dotnet format --verify-no-changes --verbosity diagnostic
 
       - name: Build
         run: dotnet build --no-restore
