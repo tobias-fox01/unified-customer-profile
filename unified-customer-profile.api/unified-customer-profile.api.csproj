@@ -14,4 +14,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\toby-\source\repos\unified-customer-profile\unified-customer-profile.api\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\toby-\source\repos\unified-customer-profile\unified-customer-profile.api\.editorconfig" />
+  </ItemGroup>
+
 </Project>
