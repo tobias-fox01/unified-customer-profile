@@ -7,11 +7,20 @@
     <RootNamespace>unified_customer_profile.api</RootNamespace>
     <UserSecretsId>33f59025-b6da-43a7-8936-7a2cc74ac4ea</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\toby-\source\repos\unified-customer-profile\unified-customer-profile.api\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\toby-\source\repos\unified-customer-profile\unified-customer-profile.api\.editorconfig" />
   </ItemGroup>
 
 </Project>
