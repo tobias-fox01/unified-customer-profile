@@ -4,9 +4,8 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>unified_customer_profile.api</RootNamespace>
+    <RootNamespace>unified_customer_profile.Api</RootNamespace>
     <UserSecretsId>33f59025-b6da-43a7-8936-7a2cc74ac4ea</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
@@ -15,12 +14,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EditorConfigFiles Remove="C:\Users\toby-\source\repos\unified-customer-profile\unified-customer-profile.api\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="C:\Users\toby-\source\repos\unified-customer-profile\unified-customer-profile.api\.editorconfig" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\unified-customer-profile.Repository\unified-customer-profile.Repository.csproj" />
+		<ProjectReference Include="..\unified-customer-profile.Services\unified-customer-profile.Services.csproj" />
+	</ItemGroup>
+	
 </Project>
