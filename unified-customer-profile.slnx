@@ -2,5 +2,6 @@
   <Project Path="unified-customer-profile.api/unified-customer-profile.api.csproj" />
   <Project Path="unified-customer-profile.repository/unified-customer-profile.repository.csproj" />
   <Project Path="unified-customer-profile.services/unified-customer-profile.services.csproj" />
+  <Project Path="unified-customer-profile.setup/unified-customer-profile.setup.csproj" Id="5e515ab8-0519-4d91-b223-42de8f725f82" />
   <Project Path="unified-customer-profile.test/unified-customer-profile-test.csproj" />
 </Solution>

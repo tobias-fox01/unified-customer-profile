@@ -1,23 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace unified_customer_profile.api.Controllers
+namespace unified_customer_profile.api.Controllers.Status;
+
+[ApiController]
+[Route("[controller]")]
+public class StatusController : ControllerBase
+
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class StatusController : ControllerBase
+    private readonly ILogger<StatusController> _logger;
 
+    public StatusController(ILogger<StatusController> logger)
     {
-        private readonly ILogger<StatusController> _logger;
+        _logger = logger;
+    }
 
-        public StatusController(ILogger<StatusController> logger)
-        {
-            _logger = logger;
-        }
-
-        [HttpGet(Name = "GetStatus")]
-        public IActionResult Get()
-        {
-            return Ok();
-        }
+    [HttpGet(Name = "GetStatus")]
+    public IActionResult Get()
+    {
+        return Ok();
     }
 }
