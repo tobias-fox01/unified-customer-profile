@@ -1,7 +1,7 @@
 {
   "customers": [
     {
-      "customerId": "cust-001",
+      "id": "cust-001",
       "firstName": "James",
       "lastName": "Smith",
       "email": "james.smith@example.com",
@@ -21,7 +21,7 @@
       "createdAt": "2024-01-10T10:15:30Z"
     },
     {
-      "customerId": "cust-002",
+      "id": "cust-002",
       "firstName": "Emily",
       "lastName": "Johnson",
       "email": "emily.johnson@example.com",
@@ -41,7 +41,7 @@
       "createdAt": "2024-02-14T14:20:00Z"
     },
     {
-      "customerId": "cust-003",
+      "id": "cust-003",
       "firstName": "Oliver",
       "lastName": "Brown",
       "email": "oliver.brown@example.com",
@@ -61,7 +61,7 @@
       "createdAt": "2023-12-01T09:00:00Z"
     },
     {
-      "customerId": "cust-004",
+      "id": "cust-004",
       "firstName": "Sophia",
       "lastName": "Williams",
       "email": "sophia.williams@example.com",
@@ -81,7 +81,7 @@
       "createdAt": "2024-03-05T11:45:00Z"
     },
     {
-      "customerId": "cust-005",
+      "id": "cust-005",
       "firstName": "Liam",
       "lastName": "Jones",
       "email": "liam.jones@example.com",
@@ -101,7 +101,7 @@
       "createdAt": "2024-01-22T16:10:00Z"
     },
     {
-      "customerId": "cust-006",
+      "id": "cust-006",
       "firstName": "Ava",
       "lastName": "Taylor",
       "email": "ava.taylor@example.com",
@@ -121,7 +121,7 @@
       "createdAt": "2024-02-01T08:30:00Z"
     },
     {
-      "customerId": "cust-007",
+      "id": "cust-007",
       "firstName": "Noah",
       "lastName": "Davies",
       "email": "noah.davies@example.com",
@@ -141,7 +141,7 @@
       "createdAt": "2023-11-18T13:25:00Z"
     },
     {
-      "customerId": "cust-008",
+      "id": "cust-008",
       "firstName": "Isabella",
       "lastName": "Evans",
       "email": "isabella.evans@example.com",
@@ -161,7 +161,7 @@
       "createdAt": "2024-03-12T17:00:00Z"
     },
     {
-      "customerId": "cust-009",
+      "id": "cust-009",
       "firstName": "William",
       "lastName": "Wilson",
       "email": "william.wilson@example.com",
@@ -181,7 +181,7 @@
       "createdAt": "2023-10-10T10:10:10Z"
     },
     {
-      "customerId": "cust-010",
+      "id": "cust-010",
       "firstName": "Mia",
       "lastName": "Thomas",
       "email": "mia.thomas@example.com",
