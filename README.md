@@ -1,4 +1,4 @@
-## unified-customer-profile
+### unified-customer-profile
 
 ## About The Project
 
@@ -6,7 +6,7 @@ Unified Customer Profile
 A middleware platform for aggregating and normalising customer data across services.
 The aim of this project is create endpoints that aggregating across multiple data sources that would reflect a real life system or company that will have data fragmented across multiple interal and external rescources.
 
-### Built With
+## Built With
 
 - .Net v10.0.0
 
@@ -37,3 +37,11 @@ podman compose --file compose.yml up --detach
 ```sh
 dotnet run --project ./unified-customer-profile.Setup
 ```
+
+6. To run the project itself run, where unified-customer-profile.Api is the main entry point
+```sh
+dotnet run --project ./unified-customer-profile.Api
+```
+
+## Contact
+Developers: Tobias Fox
