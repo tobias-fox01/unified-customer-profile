@@ -4,7 +4,7 @@ using unified_customer_profile.Setup;
 using unified_customer_profile.Setup.Models;
 
 IConfigurationRoot config = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.LocalHost.json")
+    .AddJsonFile("./../unified-customer-profile.Api/appsettings.Development.json")
     .Build();
 
 try
@@ -38,8 +38,8 @@ try
     {
         DataFile = config["CMS:DataDir"],
         DatabaseId = config["CMS:DatabaseName"],
-        ContainerId = config["CMS:Customers:ContainerName"],
-        PartitionKey = config["CMS:Customers:PartitionKey"],
+        ContainerId = config["CMS:CustomersContainerName"],
+        PartitionKey = config["CMS:CustomersPartitionKey"],
     };
     Console.WriteLine("Creating CMS Customers Container");
     await SetupCosmos.InitaliseContainer(client, customerCMSConfig);
