@@ -4,8 +4,14 @@ using unified_customer_profile.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add configuration from app settings
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
+
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddApplicationConfig(builder.Configuration);
 builder.Services.AddMiddlewareRepositories();
 builder.Services.AddMiddlewareServices();
 

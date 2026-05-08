@@ -16,9 +16,7 @@
   </ItemGroup>
 
     <ItemGroup>
-	    <None Update="appsettings.LocalHost.json">
-		    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	    </None>
+	    <ProjectReference Include="..\unified-customer-profile.Shared\unified-customer-profile.Shared.csproj" />
     </ItemGroup>
 
 </Project>
