@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using unified_customer_profile.Repository;
-using unified_customer_profile.Services;
+using unified_customer_profile.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

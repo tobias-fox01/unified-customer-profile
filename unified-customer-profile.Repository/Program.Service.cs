@@ -8,18 +8,18 @@ using unified_customer_profile.Shared.Config;
 
 public static class ServiceExtensions
 {
-    public static IServiceCollection AddApplicationConfig(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddApplicationConfig(this IServiceCollection services, IConfiguration cfg)
     {
         // Add config into service
-        services.Configure<CosmosDBSettings>(configuration.GetSection("CosmosDB"));
-        services.Configure<ContainerSettings>("CustomerCMS", configuration.GetSection("CMS:Customers"));
+        services.Configure<CosmosDBSettings>(cfg.GetSection("CosmosDB"));
+        services.Configure<ContainerSettings>("CustomerCMS", cfg.GetSection("CMS:Customers"));
 
         return services;
     }
 
     public static IServiceCollection AddMiddlewareRepositories(this IServiceCollection services)
     {
-        services.AddSingleton<CosmosRepository<CustomerCMS>>();
+        services.AddScoped(typeof(ICosmosRepository<>), typeof(CosmosRepository<>));
 
         return services;
     }

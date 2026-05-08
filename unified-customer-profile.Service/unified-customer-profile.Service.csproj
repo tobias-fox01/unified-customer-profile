@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\unified-customer-profile.Shared\unified-customer-profile.Shared.csproj" />
+    <ProjectReference Include="..\unified-customer-profile.Repository\unified-customer-profile.Repository.csproj" />
   </ItemGroup>
 
 </Project>

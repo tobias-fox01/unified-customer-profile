@@ -4,7 +4,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Options;
 using unified_customer_profile.Shared.Config;
 
-public class CosmosRepository<T>
+public class CosmosRepository<T> : ICosmosRepository<T>
 {
     private readonly Container _container;
     private readonly Database _database;

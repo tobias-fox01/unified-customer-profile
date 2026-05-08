@@ -17,6 +17,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\unified-customer-profile.Repository\unified-customer-profile.Repository.csproj" />
 		<ProjectReference Include="..\unified-customer-profile.Service\unified-customer-profile.Service.csproj" />
+		<ProjectReference Include="..\unified-customer-profile.Shared\unified-customer-profile.Shared.csproj" />
 	</ItemGroup>
 	
 </Project>

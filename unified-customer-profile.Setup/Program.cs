@@ -4,7 +4,9 @@ using unified_customer_profile.Setup;
 using unified_customer_profile.Setup.Models;
 
 IConfigurationRoot config = new ConfigurationBuilder()
-    .AddJsonFile("./../unified-customer-profile.Api/appsettings.Development.json")
+    .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "./unified-customer-profile.Api"))
+    .AddJsonFile($"appsettings.json", optional: true)
+    .AddJsonFile($"appsettings.Development.json", optional: true)
     .Build();
 
 try
@@ -37,9 +39,9 @@ try
     var customerCMSConfig = new ContainerConfig
     {
         DataFile = config["CMS:DataDir"],
-        DatabaseId = config["CMS:DatabaseName"],
-        ContainerId = config["CMS:CustomersContainerName"],
-        PartitionKey = config["CMS:CustomersPartitionKey"],
+        DatabaseId = config["CMS:Customers:DatabaseId"],
+        ContainerId = config["CMS:Customers:ContainerId"],
+        PartitionKey = config["CMS:Customers:PartitionKey"],
     };
     Console.WriteLine("Creating CMS Customers Container");
     await SetupCosmos.InitaliseContainer(client, customerCMSConfig);
