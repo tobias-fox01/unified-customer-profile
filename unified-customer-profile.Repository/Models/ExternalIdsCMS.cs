@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 
 public class ExternalIdsCMS
 {
-    public string Marketing { get; set; }
+    public string? Marketing { get; set; }
 
-    public string Auth { get; set; }
+    public string? Auth { get; set; }
 
-    public string Loyalty { get; set; }
+    public string? Loyalty { get; set; }
 }
