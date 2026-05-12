@@ -10,13 +10,8 @@ public static class ServiceExtensions
 {
     public static IServiceCollection AddMiddlewareServices(this IServiceCollection services)
     {
-        // Add scope to service
+        // Add scopes for services
         services.AddScoped<ICustomerService, CustomerService>();
-
-        // Add mapper to service
-        services.AddAutoMapper(cfg => {
-            cfg.CreateMap<CustomerCMS, Customer>();
-        });
 
         return services;
     }

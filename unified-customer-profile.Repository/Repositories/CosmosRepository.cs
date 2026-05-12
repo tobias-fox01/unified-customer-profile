@@ -2,16 +2,21 @@ namespace unified_customer_profile.Repository.Repositories;
 
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using unified_customer_profile.Shared.Config;
 
 public class CosmosRepository<T> : ICosmosRepository<T>
 {
     private readonly Container _container;
+    private readonly string _containerId;
     private readonly Database _database;
-    private readonly string _partitionKey;
+    private readonly string _databaseId;
+    private readonly ILogger<CosmosRepository<T>> _logger;
 
-    public CosmosRepository(IOptions<CosmosDBSettings> optionsCosmosDB, IOptionsMonitor<ContainerSettings> optionsContainer)
+    public CosmosRepository(ILogger<CosmosRepository<T>> logger, IOptions<CosmosDBSettings> optionsCosmosDB, IOptionsMonitor<ContainerSettings> optionsContainer)
     {
+        _logger = logger;
+        
         // Initalise Cosmos Client
         CosmosClientOptions options = new()
         {
@@ -43,21 +48,18 @@ public class CosmosRepository<T> : ICosmosRepository<T>
         {
             throw new Exception("Container Id is not set.");
         }
-        _database = client.GetDatabase(containerSettings.DatabaseId);
-        _container = _database.GetContainer(containerSettings.ContainerId);
-
-        // Sets the partition key for the repository
-        if (containerSettings.PartitionKey is null)
-        {
-            throw new Exception("Partition key is not set.");
-        }
-        _partitionKey = containerSettings.PartitionKey;
+        _databaseId = containerSettings.DatabaseId;
+        _database = client.GetDatabase(_databaseId);
+        _containerId = containerSettings.ContainerId;
+        _container = _database.GetContainer(_containerId);
     }
 
     public async Task<T> GetItemFromContainer(string id)
     {
-        T item = await _container.ReadItemAsync<T>(id, new PartitionKey(_partitionKey));
+        _logger.LogDebug("Getting item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
+        T item = await _container.ReadItemAsync<T>(id, new PartitionKey(id));
 
+        _logger.LogDebug("Successful got item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
         return item;
     }
 }

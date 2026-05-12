@@ -19,6 +19,7 @@ public static class ServiceExtensions
 
     public static IServiceCollection AddMiddlewareRepositories(this IServiceCollection services)
     {
+        // Add scopes for repositories
         services.AddScoped(typeof(ICosmosRepository<>), typeof(CosmosRepository<>));
 
         return services;
