@@ -36,7 +36,6 @@ public class CustomerControllerTests
     {
         // Act
         var id = "cust-001";
-        _customerService
 
         // Arrange
         var response = _customerController.Get(id);

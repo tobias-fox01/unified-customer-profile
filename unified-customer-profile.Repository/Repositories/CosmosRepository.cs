@@ -13,10 +13,12 @@ public class CosmosRepository<T> : ICosmosRepository<T>
     private readonly string _databaseId;
     private readonly ILogger<CosmosRepository<T>> _logger;
 
-    public CosmosRepository(ILogger<CosmosRepository<T>> logger, IOptions<CosmosDBSettings> optionsCosmosDB, IOptionsMonitor<ContainerSettings> optionsContainer)
+    public CosmosRepository(ILogger<CosmosRepository<T>> logger, IOptions<CosmosDBSettings> optionsCosmosDB, string containerId, string databaseId)
     {
         _logger = logger;
-        
+        _containerId = containerId;
+        _databaseId = databaseId;
+
         // Initalise Cosmos Client
         CosmosClientOptions options = new()
         {
@@ -39,27 +41,18 @@ public class CosmosRepository<T> : ICosmosRepository<T>
         CosmosClient client = new(optionsCosmosDB.Value.Host, optionsCosmosDB.Value.AccountKey, options);
 
         // Gets container from database using the ids
-        ContainerSettings containerSettings = optionsContainer.Get(typeof(T).Name);
-        if (containerSettings.DatabaseId is null)
-        {
-            throw new Exception("Database Id is not set.");
-        }
-        if (containerSettings.ContainerId is null)
-        {
-            throw new Exception("Container Id is not set.");
-        }
-        _databaseId = containerSettings.DatabaseId;
+        _databaseId = databaseId;
         _database = client.GetDatabase(_databaseId);
-        _containerId = containerSettings.ContainerId;
+        _containerId = containerId;
         _container = _database.GetContainer(_containerId);
     }
 
     public async Task<T> GetItemFromContainer(string id)
     {
-        _logger.LogDebug("Getting item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
+        _logger.LogTrace("Getting item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
         T item = await _container.ReadItemAsync<T>(id, new PartitionKey(id));
 
-        _logger.LogDebug("Successful got item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
+        _logger.LogTrace("Successful got item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
         return item;
     }
 }
