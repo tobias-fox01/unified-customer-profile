@@ -1,10 +1,10 @@
 namespace unified_customer_profile.Repository.Repositories;
 
 using Microsoft.Azure.Cosmos;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
-using unified_customer_profile.Shared.Config;
+using Microsoft.Extensions.Options;
 using unified_customer_profile.Repository.Models;
+using unified_customer_profile.Shared.Config;
 
 public class CustomerCmsRepository : ICustomerCmsRepository
 {

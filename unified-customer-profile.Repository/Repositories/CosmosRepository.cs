@@ -47,12 +47,26 @@ public class CosmosRepository<T> : ICosmosRepository<T>
         _container = _database.GetContainer(_containerId);
     }
 
-    public async Task<T> GetItemFromContainer(string id)
+    public async Task<T?> GetItemFromContainer(string id)
     {
         _logger.LogTrace("Getting item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
-        T item = await _container.ReadItemAsync<T>(id, new PartitionKey(id));
 
-        _logger.LogTrace("Successful got item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
-        return item;
+        try
+        {
+            T item = await _container.ReadItemAsync<T>(id, new PartitionKey(id));
+
+            _logger.LogTrace("Successful got item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
+            return item;
+        }
+        catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+        {
+            _logger.LogWarning("Item with id: {id} not found in {container} container in {database}", id, _containerId, _databaseId);
+            return null;
+        }
+        catch (CosmosException ex)
+        {
+            resultStatus = Exception;
+            throw new Exception("The server encountered an internal error.");
+        }
     }
 }

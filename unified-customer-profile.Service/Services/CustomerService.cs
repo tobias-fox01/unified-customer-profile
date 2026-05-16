@@ -2,9 +2,9 @@ namespace unified_customer_profile.Service.Services;
 
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using unified_customer_profile.Shared.Models;
 using unified_customer_profile.Repository.Models;
 using unified_customer_profile.Repository.Repositories;
+using unified_customer_profile.Shared.Models;
 
 public class CustomerService(ICustomerCmsRepository customerCmsRepository, ILogger<CustomerService> logger, IMapper mapper) : ICustomerService
 {
