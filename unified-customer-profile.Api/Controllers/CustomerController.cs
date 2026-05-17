@@ -14,16 +14,16 @@ public class CustomerController(ICustomerService customerService, ILogger<Custom
     public async Task<ActionResult<CustomerDto>> Get([FromRoute] string id)
     {
         logger.LogDebug("Starting get customer request");
-        Customer customer = await customerService.GetCustomer(id);
+        Customer? customerResult = await customerService.GetCustomer(id);
 
-        if (customer is null)
+        if (customerResult == null)
         {
             logger.LogWarning("Customer with id {id} not found.", id);
             return NotFound();
-        };
+        }
 
-        CustomerDto response = mapper.Map<CustomerDto>(customer);
-        logger.LogDebug("Successfully got customer {customer}.", customer);
-        return response;
+        CustomerDto response = mapper.Map<CustomerDto>(customerResult);
+        logger.LogDebug("Successfully got customer {customer}.", customerResult);
+        return Ok(response);
     }
 }

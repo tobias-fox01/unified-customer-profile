@@ -3,9 +3,10 @@ namespace unified_customer_profile.Repository.Repositories;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
+using System.Net;
 using unified_customer_profile.Shared.Config;
 
-public class CosmosRepository<T> : ICosmosRepository<T>
+public class CosmosRepository<T> : ICosmosRepository<T> where T : class
 {
     private readonly Container _container;
     private readonly string _containerId;
@@ -65,8 +66,8 @@ public class CosmosRepository<T> : ICosmosRepository<T>
         }
         catch (CosmosException ex)
         {
-            resultStatus = Exception;
-            throw new Exception("The server encountered an internal error.");
+            _logger.LogError(ex, "An error occurred while fetching the item with id: {id}", id);
+            throw new Exception("An error occurred while fetching the item.", ex);
         }
     }
 }

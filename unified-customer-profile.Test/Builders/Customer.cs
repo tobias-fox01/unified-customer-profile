@@ -14,14 +14,14 @@ public static class CustomerBuilder
             Email = "james.smith@example.com",
             Phone = "+447700900001",
             DateOfBirth = new DateOnly(1985, 4, 12),
-            Address =
+            Address = new Address
             {
                 Line1 = "12 King Street",
                 City = "Manchester",
                 Postcode = "M1 2AB",
                 Country = "UK"
             },
-            ExternalIds =
+            ExternalIds = new ExternalIds
             {
                 Marketing = "mkt-1001",
                 Auth = "auth-abc-001",

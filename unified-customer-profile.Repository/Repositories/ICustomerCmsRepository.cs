@@ -4,5 +4,5 @@ using unified_customer_profile.Repository.Models;
 
 public interface ICustomerCmsRepository
 {
-    public Task<CustomerCMS> GetCustomer(string customerId);
+    public Task<CustomerCMS?> GetCustomer(string customerId);
 }

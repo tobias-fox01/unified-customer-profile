@@ -27,10 +27,16 @@ public class CustomerCmsRepository : ICustomerCmsRepository
         _cosmosRepository = new CosmosRepository<CustomerCMS>(superLogger, optionsCosmosDB, customerContainerSettings.ContainerId, customerContainerSettings.DatabaseId);
     }
 
-    public async Task<CustomerCMS> GetCustomer(string customerId)
+    public async Task<CustomerCMS?> GetCustomer(string customerId)
     {
         _logger.LogTrace("Getting customer with id: {customerId} from CMS", customerId);
-        CustomerCMS customer = await _cosmosRepository.GetItemFromContainer(customerId);
+        CustomerCMS? customer = await _cosmosRepository.GetItemFromContainer(customerId);
+
+        if (customer is null)
+        {
+            _logger.LogWarning("Customer with id: {customerId} not found in CMS", customerId);
+            return null;
+        }
 
         _logger.LogTrace("Successful got customer with id: {customerId} from CMS", customerId);
         return customer;

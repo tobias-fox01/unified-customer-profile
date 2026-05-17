@@ -5,5 +5,5 @@ using unified_customer_profile.Shared.Models;
 
 public interface ICustomerService
 {
-    Task<Customer> GetCustomer(string id);
+    Task<Customer?> GetCustomer(string id);
 }
