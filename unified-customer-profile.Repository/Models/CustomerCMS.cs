@@ -1,6 +1,6 @@
 namespace unified_customer_profile.Repository.Models;
 
-public class CustomerCMS
+public class CustomerCms
 {
     public string? Id { get; set; }
 
@@ -14,9 +14,9 @@ public class CustomerCMS
 
     public DateOnly DateOfBirth { get; set; }
 
-    public AddressCMS? Address { get; set; }
+    public AddressCms? Address { get; set; }
 
-    public ExternalIdsCMS? ExternalIds { get; set; }
+    public ExternalIdsCms? ExternalIds { get; set; }
 
     public DateTime CreatedAt { get; set; }
 }

@@ -1,16 +1,15 @@
 namespace unified_customer_profile.Test.Unit.Controllers;
 
 using AutoMapper;
-using Moq;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Moq;
 using unified_customer_profile.Api.Controllers;
 using unified_customer_profile.Api.Dtos;
 using unified_customer_profile.Service.Services;
 using unified_customer_profile.Shared.Models;
 using unified_customer_profile.Test.Builders;
-using Microsoft.Extensions.Logging.Abstractions;
 
 public class CustomerControllerTests
 {
@@ -35,14 +34,14 @@ public class CustomerControllerTests
     }
 
     [Fact]
-    public async Task GetCustomer_WithCustomerId_ReturnsCustomer()
+    public async Task GetCustomer_WithCustomerId_ReturnsCustomerDto()
     {
-        // Act
+        // Arrange
         var id = "cust-001";
         var customer = CustomerBuilder.Build();
         _customerService.Setup(x => x.GetCustomer(id)).ReturnsAsync(customer);
 
-        // Arrange
+        // Act
         var result = await _customerController.Get(id);
 
         // Assert
@@ -56,11 +55,11 @@ public class CustomerControllerTests
     [Fact]
     public async Task GetCustomer_WithWrongId_ReturnsNotFound()
     {
-        // Act
+        // Arrange
         var id = "cust-a";
         _customerService.Setup(x => x.GetCustomer(id)).ReturnsAsync((Customer?)null);
 
-        // Arrange
+        // Act
         var result = await _customerController.Get(id);
 
         // Assert

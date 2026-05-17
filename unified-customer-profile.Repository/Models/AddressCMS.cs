@@ -1,6 +1,6 @@
 namespace unified_customer_profile.Repository.Models;
 
-public class AddressCMS
+public class AddressCms
 {
     public string? Line1 { get; set; }
 

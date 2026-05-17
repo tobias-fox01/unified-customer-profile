@@ -11,15 +11,15 @@ public class CustomerService(ICustomerCmsRepository customerCmsRepository, ILogg
     public async Task<Customer?> GetCustomer(string id)
     {
         logger.LogDebug("Getting customer from CMS Customers container.");
-        CustomerCMS? customerCMS = await customerCmsRepository.GetCustomer(id);
+        CustomerCms? customerCms = await customerCmsRepository.GetCustomerRecord(id);
 
-        if (customerCMS == null)
+        if (customerCms == null)
         {
             logger.LogWarning("Customer with id {id} not found.", id);
             return null;
         }
 
-        Customer customer = mapper.Map<Customer>(customerCMS);
+        Customer customer = mapper.Map<Customer>(customerCms);
         logger.LogDebug("Successfully got customer from CMS Customers container.");
 
         return customer;

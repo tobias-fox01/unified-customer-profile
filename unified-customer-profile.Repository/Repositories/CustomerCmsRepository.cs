@@ -8,37 +8,27 @@ using unified_customer_profile.Shared.Config;
 
 public class CustomerCmsRepository : ICustomerCmsRepository
 {
-    private readonly ICosmosRepository<CustomerCMS> _cosmosRepository;
+    private readonly ICosmosRepository<CustomerCms> _cosmosRepository;
     private readonly ILogger<CustomerCmsRepository> _logger;
 
-    public CustomerCmsRepository(ILogger<CustomerCmsRepository> logger, ILogger<CosmosRepository<CustomerCMS>> superLogger, IOptions<CosmosDBSettings> optionsCosmosDB, IOptionsMonitor<ContainerSettings> optionsContainer)
+    public CustomerCmsRepository(ICosmosRepository<CustomerCms> cosmosRepository, ILogger<CustomerCmsRepository> logger)
     {
         _logger = logger;
-
-        ContainerSettings customerContainerSettings = optionsContainer.Get("CustomerCMS");
-        if (customerContainerSettings.DatabaseId is null)
-        {
-            throw new Exception("Database Id is not set.");
-        }
-        if (customerContainerSettings.ContainerId is null)
-        {
-            throw new Exception("Container Id is not set.");
-        }
-        _cosmosRepository = new CosmosRepository<CustomerCMS>(superLogger, optionsCosmosDB, customerContainerSettings.ContainerId, customerContainerSettings.DatabaseId);
+        _cosmosRepository = cosmosRepository;
     }
 
-    public async Task<CustomerCMS?> GetCustomer(string customerId)
+    public async Task<CustomerCms?> GetCustomerRecord(string customerId)
     {
         _logger.LogTrace("Getting customer with id: {customerId} from CMS", customerId);
-        CustomerCMS? customer = await _cosmosRepository.GetItemFromContainer(customerId);
+        CustomerCms? customerRecord = await _cosmosRepository.GetItemFromContainer(customerId);
 
-        if (customer is null)
+        if (customerRecord is null)
         {
             _logger.LogWarning("Customer with id: {customerId} not found in CMS", customerId);
             return null;
         }
 
         _logger.LogTrace("Successful got customer with id: {customerId} from CMS", customerId);
-        return customer;
+        return customerRecord;
     }
 }

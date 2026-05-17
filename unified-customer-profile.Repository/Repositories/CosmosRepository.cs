@@ -14,11 +14,9 @@ public class CosmosRepository<T> : ICosmosRepository<T> where T : class
     private readonly string _databaseId;
     private readonly ILogger<CosmosRepository<T>> _logger;
 
-    public CosmosRepository(ILogger<CosmosRepository<T>> logger, IOptions<CosmosDBSettings> optionsCosmosDB, string containerId, string databaseId)
+    public CosmosRepository(ILogger<CosmosRepository<T>> logger, IOptions<CosmosDBSettings> optionsCosmosDB, IOptionsMonitor<ContainerSettings> optionsContainer)
     {
         _logger = logger;
-        _containerId = containerId;
-        _databaseId = databaseId;
 
         // Initalise Cosmos Client
         CosmosClientOptions options = new()
@@ -41,10 +39,19 @@ public class CosmosRepository<T> : ICosmosRepository<T> where T : class
         }
         CosmosClient client = new(optionsCosmosDB.Value.Host, optionsCosmosDB.Value.AccountKey, options);
 
+        ContainerSettings containerSettings = optionsContainer.Get(typeof(T).Name);
         // Gets container from database using the ids
-        _databaseId = databaseId;
+        if (containerSettings.DatabaseId is null)
+        {
+            throw new ArgumentNullException(nameof(containerSettings.DatabaseId), "Database Id is not set.");
+        }
+        _databaseId = containerSettings.DatabaseId;
         _database = client.GetDatabase(_databaseId);
-        _containerId = containerId;
+        if (containerSettings.ContainerId is null)
+        {
+            throw new ArgumentNullException(nameof(containerSettings.ContainerId), "Container Id is not set.");
+        }
+        _containerId = containerSettings.ContainerId;
         _container = _database.GetContainer(_containerId);
     }
 
