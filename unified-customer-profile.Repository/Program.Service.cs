@@ -23,7 +23,8 @@ public static class ServiceExtensions
     public static IServiceCollection AddMiddlewareRepositories(this IServiceCollection services)
     {
         // Add scopes for repositories
-        services.AddSingleton<CosmosClient>((s) => {
+        services.AddSingleton<CosmosClient>((s) =>
+        {
             // Initalise Cosmos Client
             CosmosDBSettings optionsCosmosDB = s.GetRequiredService<IOptions<CosmosDBSettings>>().Value;
             CosmosClientOptions options = new()

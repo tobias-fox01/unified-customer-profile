@@ -1,8 +1,8 @@
 namespace unified_customer_profile.Repository.Repositories;
 
 using Microsoft.Azure.Cosmos;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Net;
 using unified_customer_profile.Shared.Config;
 
