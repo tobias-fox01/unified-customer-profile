@@ -45,9 +45,9 @@ public class CustomerServiceTests
 
         // Assert
         var response = Assert.IsType<Customer>(result) as Customer;
-        Assert.Equal("cust-001", response.Id);
-        Assert.Equal("James", response.FirstName);
-        _customerRepository.Verify(r => r.GetCustomerRecord("cust-001"), Times.Once);
+        Assert.Equal(id, response.Id);
+        Assert.Equal(customer.FirstName, response.FirstName);
+        _customerRepository.Verify(r => r.GetCustomerRecord(id), Times.Once);
     }
 
     [Fact]

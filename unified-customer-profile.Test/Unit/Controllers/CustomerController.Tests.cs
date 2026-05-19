@@ -47,9 +47,9 @@ public class CustomerControllerTests
         // Assert
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
         var response = Assert.IsType<CustomerDto>(okResult.Value) as CustomerDto;
-        Assert.Equal("cust-001", response.Id);
-        Assert.Equal("James", response.FirstName);
-        _customerService.Verify(s => s.GetCustomer("cust-001"), Times.Once);
+        Assert.Equal(id, response.Id);
+        Assert.Equal(customer.FirstName, response.FirstName);
+        _customerService.Verify(s => s.GetCustomer(id), Times.Once);
     }
 
     [Fact]

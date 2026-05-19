@@ -14,40 +14,19 @@ public class CosmosRepository<T> : ICosmosRepository<T> where T : class
     private readonly string _databaseId;
     private readonly ILogger<CosmosRepository<T>> _logger;
 
-    public CosmosRepository(ILogger<CosmosRepository<T>> logger, IOptions<CosmosDBSettings> optionsCosmosDB, IOptionsMonitor<ContainerSettings> optionsContainer)
+    public CosmosRepository(CosmosClient client, ILogger<CosmosRepository<T>> logger, IOptionsMonitor<ContainerSettings> optionsContainer)
     {
         _logger = logger;
 
-        // Initalise Cosmos Client
-        CosmosClientOptions options = new()
-        {
-            ConnectionMode = ConnectionMode.Gateway,
-            LimitToEndpoint = true,
-            HttpClientFactory = () => new HttpClient(new HttpClientHandler
-            {
-                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
-            })
-        };
-
-        if (optionsCosmosDB.Value.Host is null)
-        {
-            throw new Exception("CosmosDB Host is not set.");
-        }
-        if (optionsCosmosDB.Value.AccountKey is null)
-        {
-            throw new Exception("CosmosDB Account Key is not set.");
-        }
-        CosmosClient client = new(optionsCosmosDB.Value.Host, optionsCosmosDB.Value.AccountKey, options);
-
         ContainerSettings containerSettings = optionsContainer.Get(typeof(T).Name);
         // Gets container from database using the ids
-        if (containerSettings.DatabaseId is null)
+        if (String.IsNullOrWhiteSpace(containerSettings.DatabaseId))
         {
             throw new ArgumentNullException(nameof(containerSettings.DatabaseId), "Database Id is not set.");
         }
         _databaseId = containerSettings.DatabaseId;
         _database = client.GetDatabase(_databaseId);
-        if (containerSettings.ContainerId is null)
+        if (String.IsNullOrWhiteSpace(containerSettings.ContainerId))
         {
             throw new ArgumentNullException(nameof(containerSettings.ContainerId), "Container Id is not set.");
         }
