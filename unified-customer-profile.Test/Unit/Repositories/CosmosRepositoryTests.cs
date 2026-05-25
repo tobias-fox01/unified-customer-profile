@@ -1,5 +1,6 @@
 namespace unified_customer_profile.Test.Unit.Repositories;
 
+using FluentAssertions;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -64,9 +65,8 @@ public class CosmosRepositoryTests
         var result = await _cosmosRepository.GetItemFromContainer(id);
 
         // Assert
-        Assert.NotNull(result);
-        Assert.Equal(id, result.Id);
-        Assert.Equal(customer.FirstName, result.FirstName);
+        result.Should().NotBeNull();
+        result.Should().BeEquivalentTo(customer);
         _container.Verify(r => r.ReadItemAsync<CustomerCms>(id, new PartitionKey(id)), Times.Once);
     }
 
@@ -83,7 +83,7 @@ public class CosmosRepositoryTests
         var result = await _cosmosRepository.GetItemFromContainer(id);
 
         // Assert
-        Assert.Null(result);
+        result.Should().BeNull();
     }
 
     [Fact]
@@ -96,10 +96,10 @@ public class CosmosRepositoryTests
             .ThrowsAsync(new CosmosException("Unexpected error", HttpStatusCode.InternalServerError, 500, "test-not-found", 0));
 
         // Act
-        var result = _cosmosRepository.GetItemFromContainer(id);
+        var act = () => _cosmosRepository.GetItemFromContainer(id);
 
         // Assert
-        var exception = await Assert.ThrowsAsync<Exception>(() => result);
-        Assert.Equal("An error occurred while fetching the item.", exception.Message);
+        var exception = await act.Should().ThrowAsync<Exception>();
+        exception.WithMessage("An error occurred while fetching the item.");
     }
 }

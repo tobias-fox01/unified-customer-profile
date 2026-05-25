@@ -1,5 +1,6 @@
 namespace unified_customer_profile.Test.Unit.Repositories;
 
+using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
 using unified_customer_profile.Repository.Models;
@@ -33,9 +34,8 @@ public class CustomerCmsRepositoryTests
         var result = await _customerCmsRepository.GetCustomerRecord(id);
 
         // Assert
-        var response = Assert.IsType<CustomerCms>(result) as CustomerCms;
-        Assert.Equal("cust-001", response.Id);
-        Assert.Equal("James", response.FirstName);
+        var response = result.Should().BeOfType<CustomerCms>().Subject;
+        response.Should().BeEquivalentTo(customer);
         _cosmosRepository.Verify(r => r.GetItemFromContainer("cust-001"), Times.Once);
     }
 
@@ -50,6 +50,6 @@ public class CustomerCmsRepositoryTests
         var result = await _customerCmsRepository.GetCustomerRecord(id);
 
         // Assert
-        Assert.Null(result);
+        result.Should().BeNull();
     }
 }
