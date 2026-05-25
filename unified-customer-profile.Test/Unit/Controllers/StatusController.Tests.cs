@@ -1,5 +1,6 @@
 namespace unified_customer_profile.Test.Unit.Controllers;
 
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,7 +26,6 @@ public class StatusControllerTest
         var response = _statusController.Get();
 
         // Assert
-        var okResult = Assert.IsType<OkResult>(response);
-        Assert.Equal(StatusCodes.Status200OK, okResult.StatusCode);
+        response.Should().BeOfType<OkResult>();
     }
 }

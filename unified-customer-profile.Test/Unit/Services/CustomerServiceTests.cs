@@ -1,6 +1,7 @@
 namespace unified_customer_profile.Test.Unit.Services;
 
 using AutoMapper;
+using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
@@ -44,9 +45,8 @@ public class CustomerServiceTests
         var result = await _customerService.GetCustomer(id);
 
         // Assert
-        var response = Assert.IsType<Customer>(result) as Customer;
-        Assert.Equal(id, response.Id);
-        Assert.Equal(customer.FirstName, response.FirstName);
+        var response = result.Should().BeOfType<Customer>().Subject;
+        response.Should().BeEquivalentTo(customer);
         _customerRepository.Verify(r => r.GetCustomerRecord(id), Times.Once);
     }
 
@@ -61,6 +61,6 @@ public class CustomerServiceTests
         var result = await _customerService.GetCustomer(id);
 
         // Assert
-        Assert.Null(result);
+        result.Should().BeNull();
     }
 }

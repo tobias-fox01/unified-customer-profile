@@ -1,6 +1,7 @@
 namespace unified_customer_profile.Test.Unit.Controllers;
 
 using AutoMapper;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -45,10 +46,9 @@ public class CustomerControllerTests
         var result = await _customerController.Get(id);
 
         // Assert
-        var okResult = Assert.IsType<OkObjectResult>(result.Result);
-        var response = Assert.IsType<CustomerDto>(okResult.Value) as CustomerDto;
-        Assert.Equal(id, response.Id);
-        Assert.Equal(customer.FirstName, response.FirstName);
+        var okResult = result.Result.Should().BeOfType<OkObjectResult>().Subject;
+        var response = okResult.Value.Should().BeOfType<CustomerDto>().Subject;
+        response.Should().BeEquivalentTo(customer);
         _customerService.Verify(s => s.GetCustomer(id), Times.Once);
     }
 
@@ -63,6 +63,6 @@ public class CustomerControllerTests
         var result = await _customerController.Get(id);
 
         // Assert
-        var notFoundResult = Assert.IsType<NotFoundResult>(result.Result);
+        result.Result.Should().BeOfType<NotFoundResult>();
     }
 }
