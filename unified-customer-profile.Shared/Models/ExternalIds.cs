@@ -1,6 +1,6 @@
-namespace unified_customer_profile.Repository.Models;
+namespace unified_customer_profile.Shared.Models;
 
-public class ExternalIdsCms
+public class ExternalIds
 {
     public string? Marketing { get; set; }
 

@@ -30,7 +30,7 @@ public static class SetupCosmos
         }
         Container container = await database.CreateContainerIfNotExistsAsync(
             id: config.ContainerId,
-            partitionKeyPath: config.PartitionKey
+            partitionKeyPath: config.PartitionKeyPath
         );
 
         // Turns the json file into an array of items

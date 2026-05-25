@@ -1,6 +1,6 @@
-namespace unified_customer_profile.Repository.Models;
+namespace unified_customer_profile.Api.Dtos;
 
-public class AddressCms
+public class AddressDto
 {
     public string? Line1 { get; set; }
 

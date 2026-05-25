@@ -1,6 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
+using unified_customer_profile.Api;
 using unified_customer_profile.Repository;
-using unified_customer_profile.Services;
+using unified_customer_profile.Service;
+using unified_customer_profile.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
+
+// Add automapper
+builder.Services.InitalizeAutoMapper();
 
 // Add services to the container.
 builder.Services.AddControllers();

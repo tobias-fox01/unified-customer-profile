@@ -1,6 +1,6 @@
-namespace unified_customer_profile.Repository.Models;
+namespace unified_customer_profile.Api.Dtos;
 
-public class ExternalIdsCms
+public class ExternalIdsDto
 {
     public string? Marketing { get; set; }
 
