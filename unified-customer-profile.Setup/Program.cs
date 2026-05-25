@@ -25,11 +25,11 @@ try
     string? cosmosHost = config["CosmosDB:Host"];
     string? cosmosAccountKey = config["CosmosDB:Host"];
 
-    if (cosmosHost is null)
+    if (String.IsNullOrWhiteSpace(cosmosHost))
     {
         throw new Exception("CosmosDB Host is not set.");
     }
-    if (cosmosAccountKey is null)
+    if (String.IsNullOrWhiteSpace(cosmosAccountKey))
     {
         throw new Exception("CosmosDB Account Key is not set.");
     }
@@ -41,7 +41,7 @@ try
         DataFile = config["CMS:DataDir"],
         DatabaseId = config["CMS:Customers:DatabaseId"],
         ContainerId = config["CMS:Customers:ContainerId"],
-        PartitionKey = config["CMS:Customers:PartitionKey"],
+        PartitionKeyPath = config["CMS:Customers:PartitionKeyPath"],
     };
     Console.WriteLine("Creating CMS Customers Container");
     await SetupCosmos.InitaliseContainer(client, customerCMSConfig);

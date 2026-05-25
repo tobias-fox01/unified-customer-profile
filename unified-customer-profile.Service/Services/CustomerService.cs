@@ -20,7 +20,7 @@ public class CustomerService(ICustomerCmsRepository customerCmsRepository, ILogg
         }
 
         Customer customer = mapper.Map<Customer>(customerCms);
-        logger.LogDebug("Successfully got customer from CMS Customers container.");
+        logger.LogDebug("Successfully got customer {@customer} from CMS Customers container.", customer);
 
         return customer;
     }

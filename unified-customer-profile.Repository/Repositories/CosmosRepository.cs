@@ -19,6 +19,7 @@ public class CosmosRepository<T> : ICosmosRepository<T> where T : class
         _logger = logger;
 
         ContainerSettings containerSettings = optionsContainer.Get(typeof(T).Name);
+
         // Gets container from database using the ids
         if (String.IsNullOrWhiteSpace(containerSettings.DatabaseId))
         {
@@ -26,6 +27,7 @@ public class CosmosRepository<T> : ICosmosRepository<T> where T : class
         }
         _databaseId = containerSettings.DatabaseId;
         _database = client.GetDatabase(_databaseId);
+
         if (String.IsNullOrWhiteSpace(containerSettings.ContainerId))
         {
             throw new ArgumentNullException(nameof(containerSettings.ContainerId), "Container Id is not set.");
@@ -42,7 +44,7 @@ public class CosmosRepository<T> : ICosmosRepository<T> where T : class
         {
             T item = await _container.ReadItemAsync<T>(id, new PartitionKey(id));
 
-            _logger.LogTrace("Successful got item with id: {id} from {container} container in {database}", id, _containerId, _databaseId);
+            _logger.LogTrace("Successful got {@item} from {container} container in {database}", item, _containerId, _databaseId);
             return item;
         }
         catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)

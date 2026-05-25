@@ -10,7 +10,7 @@ public static class SetupCosmos
     public static async Task InitaliseContainer(CosmosClient client, ContainerConfig config)
     {
         // Creates database if it doesnt already exist
-        if (config.DatabaseId is null)
+        if (String.IsNullOrWhiteSpace(config.DatabaseId))
         {
             throw new Exception("CosmosDB Database Id is not set.");
         }
@@ -20,11 +20,11 @@ public static class SetupCosmos
         );
 
         // Creates container if it doesnt already exist]
-        if (config.ContainerId is null)
+        if (String.IsNullOrWhiteSpace(config.ContainerId))
         {
             throw new Exception("CosmosDB Container Id is not set.");
         }
-        if (config.PartitionKey is null)
+        if (String.IsNullOrWhiteSpace(config.PartitionKeyPath))
         {
             throw new Exception("Container's Partition Key is not set.");
         }
@@ -34,7 +34,7 @@ public static class SetupCosmos
         );
 
         // Turns the json file into an array of items
-        if (config.DataFile is null)
+        if (String.IsNullOrWhiteSpace(config.DataFile))
         {
             throw new Exception("Data file directory is not set.");
         }
