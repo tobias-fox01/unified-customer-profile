@@ -23,7 +23,7 @@ public class CustomerController(ICustomerService customerService, ILogger<Custom
         }
 
         CustomerDto response = mapper.Map<CustomerDto>(customerResult);
-        logger.LogDebug("Successfully got customer {customer}.", customerResult);
+        logger.LogDebug("Successfully got customer {@customer}.", customerResult);
         return Ok(response);
     }
 }

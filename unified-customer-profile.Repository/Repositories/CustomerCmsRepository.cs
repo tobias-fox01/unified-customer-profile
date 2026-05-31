@@ -28,7 +28,7 @@ public class CustomerCmsRepository : ICustomerCmsRepository
             return null;
         }
 
-        _logger.LogTrace("Successful got customer with id: {customerId} from CMS", customerId);
+        _logger.LogTrace("Successful got {@customerRecord} from CMS", customerRecord);
         return customerRecord;
     }
 }
