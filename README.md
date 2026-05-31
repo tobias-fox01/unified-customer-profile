@@ -10,6 +10,13 @@ The aim of this project is create endpoints that aggregating across multiple dat
 
 - .Net v10.0.0
 
+## Requirements
+
+- .Net 10.0.0 SDK
+- Podman (or Docker)
+- Cosmos DB Emulator (or Azure Cosmos DB Account) - This is spun up using the compose file, you may need to import the SSL certificate
+  follow this guide for more details https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-develop-emulator?tabs=docker-linux%2Ccsharp&pivots=api-nosql#import-the-emulators-tlsssl-certificate
+
 ## Setup
 
 1. Clone the repository
