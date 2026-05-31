@@ -1,5 +1,5 @@
-using Serilog;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using unified_customer_profile.Api;
 using unified_customer_profile.Repository;
 using unified_customer_profile.Service;

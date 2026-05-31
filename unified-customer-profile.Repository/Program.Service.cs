@@ -29,12 +29,13 @@ public static class ServiceExtensions
             CosmosDBSettings optionsCosmosDB = s.GetRequiredService<IOptions<CosmosDBSettings>>().Value;
             CosmosClientOptions options = new()
             {
-                ConnectionMode = ConnectionMode.Gateway,
-                LimitToEndpoint = true,
                 HttpClientFactory = () => new HttpClient(new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
-                })
+                }),
+                ConnectionMode = ConnectionMode.Gateway,
+                LimitToEndpoint = true,
+                RequestTimeout = TimeSpan.FromSeconds(10), // Sets the timeout for the request to 10 seconds.
             };
 
             if (String.IsNullOrWhiteSpace(optionsCosmosDB.Host))

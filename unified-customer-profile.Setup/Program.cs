@@ -4,7 +4,7 @@ using unified_customer_profile.Setup;
 using unified_customer_profile.Setup.Models;
 
 IConfigurationRoot config = new ConfigurationBuilder()
-    .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "./unified-customer-profile.Api"))
+    .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../unified-customer-profile.Api"))
     .AddJsonFile($"appsettings.json", optional: true)
     .AddJsonFile($"appsettings.Development.json", optional: true)
     .Build();
